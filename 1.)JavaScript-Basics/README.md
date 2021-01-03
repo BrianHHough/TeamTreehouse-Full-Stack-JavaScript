@@ -59,3 +59,12 @@ Internet Explorer Console Keyboard Shortcuts
 Safari Console Keyboard Shortcuts
 - Cmd + Option + C
 
+## Practice Challenge Notes
+
+This statement selects the <h1> element and replaces its text with "BOOM!".
+
+    document.querySelector("h1").textContent = "🔥BOOM!🔥";
+
+
+## Variables
+

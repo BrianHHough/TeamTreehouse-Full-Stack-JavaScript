@@ -80,10 +80,12 @@ Once you store data in a variable, you can use and access it whenever you need i
 
 
 >> OUTPUT = message (b/c logging the word message, not the variable) 
+    
     var message = "Hello!"
     console.log("message");
 
 >> OUTPUT = Hello! (b/c logging the variable of message which has the text input value of "Hello!") 
+    
     var message = "Hello!"
     console.log(message);
 
@@ -158,6 +160,7 @@ Destructuring assignment allows you to assign the properties of an array or obje
 Example:
 
 >>  OUTPUT: 115
+    
     var score = 0;
     score += 10;
     score += 5;
@@ -189,9 +192,12 @@ Make code less error prone than var...
 Example: 
 
 >> OUTPUT: 5
+    
     const score = 5;
     console.log(score);
+
 >> OUTPUT: Assignment to Constant error -- you cannot change/manipulate value of variable through reassignment or redeclare the same constant variable (i.e. writing const score x2)
+    
     const score = 5;
     score += 5;
     console.log(score);
@@ -205,11 +211,13 @@ Example:
  Example:
 
  >> OUTPUT: 15
+
     let score = 5;
     score += 10;
     console.log(score);
 
 >> OUTPUT: Syntax Error -- you cannot reassign let variables later on in the program, while you can do that with const.
+   
     let score = 5;
     score += 10;
 
@@ -218,15 +226,19 @@ Example:
 
 Example: 
 >> How can you reassign the below info using shorthand syntax?
+   
     let correct = 0;
     correct = correct + 1;
+
 >> Solution:
+   
     let correct = 0;
     correct += 1;
 
 Example: Evaluate the code in app.js. The code currently produces a TypeError. Adjust the code so that the points variable holds the expected value.
 
 >> Solution: use `let` for points variable b/c it will change by adding bonus points to it
+   
     let points = 100;
     const bonusPts = 50;
 

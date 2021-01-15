@@ -397,5 +397,49 @@ We'll use  `document.` method with the `querySelector()` method to interact with
     let total = `Total points: ${points + bonusPts}`;
     console.log(total);
 
+# Introducing Conditional Statements
+Let you make the program behave differently based on inputs and conditions. Make your software more flexible.
 
+**Strict Equality Operator**
+===
+to test if two values are exactly the same
+- Example: ( '3' == 3) --> FALSE (comparing strings to numbers)
+- Example: ( ' ' === 0) --> FALSE
+    - This is why the === is better to use
+
+**Equality Operator**
+==
+Tests if two values are the same
+- Example: ( '3' == 3) --> TRUE
+- Example: ( ' ' == 0) --> TRUE
+
+**Logical Not Operator**
+!=
+- Example: ( 10 !== 9) --> TRUE because 10 is not strictly equal to 9
+- Example: ( '10' !== 10) --> FALSE because comparing string to number; types do not match
+- ( 'Java' !== 'java') --> TRUE
+
+**If Else Statement**
+Two doors
+
+if () {
+
+} else {
+
+}
+
+# Conditional Operators
+
+| Symbol | Meaning |
+| :---: | :---: |
+| > | Greater Than |
+| >= | Greater Than or Equal To |
+| < | Less Than |
+| <= | Less Than or Equal To |
+| == | Equal To |
+| === | Strict Equal To |
+| != | Not Equal To |
+| !== | Strict Not Equal To |
+
+- letter strings always go after numbers
 

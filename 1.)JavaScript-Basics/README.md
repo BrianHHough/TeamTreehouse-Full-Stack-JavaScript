@@ -46,6 +46,7 @@ What is one benefit of putting your JavaScript code just before the closing </bo
 Chrome Console Keyboard Shortcuts
 - Windows: Ctrl + Shift + J
 - Mac: Cmd + Option + J
+- My keyboard: Cmd + Alt + J
 
 **for me with keyboard it's: COMMAND + ALT + J**
 
@@ -388,8 +389,13 @@ We'll use  `document.` method with the `querySelector()` method to interact with
 `.innerHTML` = property that replaces existing content of element with new content. 
 
 
-# Variables and Strings Challenge: Story Maker Mad Libs Game 
+**Which of the following code examples logs `Total points: 500 to the console`?**
 
+>> Answer
+    const points = 400;
+    const bonusPts = 100;
+    let total = `Total points: ${points + bonusPts}`;
+    console.log(total);
 
 
 

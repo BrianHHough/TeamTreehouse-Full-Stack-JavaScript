@@ -428,6 +428,8 @@ if () {
 
 }
 
+- `else` clause is optional, but useful. It lets you run additional code if the condition is false.
+
 # Conditional Operators
 
 | Symbol | Meaning |
@@ -442,4 +444,26 @@ if () {
 | !== | Strict Not Equal To |
 
 - letter strings always go after numbers
+- a string is not equal to a number
+- when comparing strings, the first letter of the first string is compared to the first letter of the second string.
+- `( 'lion' > 'zebra' )` --> this is false b/c 'l' comes before 'z' 
+
+## Challenge Task: Conditional Statement
+
+> Add a conditional statement that tests if the value in variable a is greater than the value in variable b. If it is, log the message "a is greater than b" to the console. Then, add an else clause that logs the message "a is not greater than b". 
+
+    const a = 10;
+    const b = 20;
+    const c = 30;
+
+    if ( a > b ) {
+    console.log("a is greater than b");
+    } else {
+    console.log("a is not greater than b");
+    }
+
+# Boolean Values: True and False
+
+
+
 

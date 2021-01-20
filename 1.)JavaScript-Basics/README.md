@@ -464,6 +464,11 @@ if () {
 
 # Boolean Values: True and False
 
+A condition in a conditional statement is just a yes/no (true/false), which are booleans.
 
+Only one of two possible options - asking program yes/no questions.
 
+- maintain conditions of a variable for example
+
+> Let b/c we expect the value of `correctGuess` to change. The value returned by a prompt method is a string. Using strict equality operator. Need to return string to number value w/ the + button to compare two number values.
 

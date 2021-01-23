@@ -470,5 +470,105 @@ Only one of two possible options - asking program yes/no questions.
 
 - maintain conditions of a variable for example
 
-> Let b/c we expect the value of `correctGuess` to change. The value returned by a prompt method is a string. Using strict equality operator. Need to return string to number value w/ the + button to compare two number values.
+> Let b/c we expect the value of `correctGuess` to change. The value returned by a prompt method is a string. Using strict equality operator. Need to return string to number value w/ the + button to compare two number values. This is called the [**unary plus operator**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Unary_plus) which precedes an operand and evalutes to its operand but attempts to convert it into a number.
+
+    let correctGuess = false; 
+    const number = 6;
+    const guess = prompt('Guess a number between 1 and 10.');
+                        
+    // Conditional statement
+    if ( +guess === number ) {
+    correctGuess = true;
+    }
+
+    // If statement checks
+    if ( correctGuess === true ) {
+    console.log('You guessed the number!');
+    } else {
+    console.log(`Sorry. The number was ${number}.`);
+    }
+
+
+# Program Multiple Outcomes with Else-If
+What if you want many different outcomes than just two?
+
+[**else if**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else#Using_else_if) statement makes the program more flexible and let's you respond to multiple conditional outcomes.
+- Example: In a conditional statement with one if clause, two `else if` clauses and an `else` clause, what is the maximum number of code blocks in that conditional statement that can run? The answer is: `1`
+
+- Part 1: **if** --> tests if true/false
+- Part 2: **else if** --> only get here if the first if is false (not true)
+- Part 3: **else** --> only runs if the first two are false (not true)
+_ Part X: etc. etc. with else if and else
+
+>> Weather Check App
+    const weather = '';
+
+    if ( weather === 'sun') {
+    console.log("It's sunny, so I'm going swimming.");
+    
+    } else if ( weather === 'rain' ) {
+    console.log("It's raining, so I will read a book");
+    
+    } else if ( weather === 'snow' ) {
+    console.log("It's snowing, so I'm going sledding.");
+    
+    } else {
+    console.log("I don't know what I'm doing today.");
+    }
+
+# Multi-part challenge with Booleans and Else-If's
+>> Add an `else if` clause that tests if the `isStudent` variable is true. If it's true, set the value of the message variable to "Welcome student".
+
+    const isAdmin = true;
+    const isStudent = false;
+    let message;
+
+    if ( isAdmin ) {
+    message = "Welcome admin";
+    console.log( message );
+    } else
+    console.log("access denied");
+
+>> Add an else if clause that tests if the isStudent variable is true. If it's true, set the value of the message variable to "Welcome student".
+
+    const isAdmin = false;
+    const isStudent = true;
+    let message;
+
+    if ( isAdmin ) {
+    message = 'Welcome admin';
+    } else if (isStudent) {
+    message = "Welcome student"
+    }
+
+>> Add a final else clause to this conditional statement. If both the isAdmin and isStudent variables are false, the value of the message variable should be "Access denied". Important to note that An `else` clause doesn't check for a condition, so no parentheses are necessary. The code inside the else clause runs only if none of the previous conditions are met. 
+
+    const isAdmin = false;
+    const isStudent = false;
+    let message;
+
+    if ( isAdmin ) {
+    message = 'Welcome admin';
+    } else if ( isStudent ) {
+    message = 'Welcome student';
+    } else {
+    message = 'Access denied';
+    }
+
+# Test Multiple Conditions With the && Operator
+Both conditions evaluated separately. Combines tests together.
+
+Example: does a variable lies within a specific range?
+
+>> True
+    let age = 25;
+    (20 < age && age < 30 )
+
+>> False
+    age = 35;
+    ( 20 < age && age < 30 )
+
+
+
+
 

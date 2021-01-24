@@ -130,3 +130,31 @@ console.log(totalBadges);
 
     const pi = prompt('What is Pi?');
     console.log( +pi === 3.14 );
+
+
+# Perform Operations With the Math Object
+In addition to the arithmetic operators you learned, JavaScript has a built-in `Math` object used to perform complex mathematical operations on numbers.
+
+[**Primitive Data Types**](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)
+- Their basic values are built into the language. 
+- A wrapper is added via JS so you can edit these types, called an **object**
+- All **objects** have:
+    - Properties: variables associated to the object
+    - Methods: actions that they can perform
+- Examples:
+    - Strings: 'I'm a string'
+        - the string object has a prop called `.length` = holds a numeric value (find the chars in a string) 
+        - the string object has a method called `.toUppercase();` = convert string to all upercase letters
+    - Booleans: True/False
+    - Numbers: 3.14
+
+The [**Math object**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math) for running complex math ops -- square roots, sign, cosign, logs, etc.
+- Example: Math.pi for working with circles
+- Example: `[Math.round()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)` = rounds to nearest whole number
+
+
+# Create a Random Number
+
+- Math.random() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) returns a floating-point, pseudo-random number between 0 and 1, inclusive of 0 but not 1.
+- Math.floor() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
+- Math.ceil() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)

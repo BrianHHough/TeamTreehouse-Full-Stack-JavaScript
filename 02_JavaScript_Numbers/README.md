@@ -32,9 +32,8 @@ Any character inside of quotes -- including numbers -- are strings.
 - [Assignment Operators](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Math#Assignment_operators)
 
 
-Here's my solution!
 
->> Build a short program that helps you calculate the number of seconds in a day, hours in a week, or minutes in a year.
+>> Build a short program that helps you calculate the number of seconds in a day, hours in a week, or minutes in a year && how many seconds you've been alive if your age is 25 years old.
 
 ```js
 const secsPerMin = 60;
@@ -54,4 +53,80 @@ const secsAlive = secondsPerDay * 365 * yearsAlive;
 console.log(`I've been alive for more than ${secsAlive} seconds!`);
 ```
 	
+>> Which of the following adds 20 to the current value of the variable points, then stores the result back into points.
 
+    points = 20 + points;
+
+>> Use the shorthand operator that adds 20 to the current value of the variable points, then stores the result back into points.
+
+    points += 20;
+
+# Treating Strings As Numbers
+
+If you are supposed to receive data as numbers...be careful that you don't treat those numbers like they are strings.....operators will concatinate the strings together (i.e. '10' + '5' = 105 rather than 10 + 5 = 15)
+
+You need to convert the string to a number!
+
+**`typeof`**: special operator to verify the type of operator.
+- used to check variable's type and ensure it's the correct data type.
+
+        // Returns string/number 
+        console.log( typeof HTMLBadges), typeof parseInt(CSSBadges) );
+
+
+        // Returns pi as a string
+        const pi = '3.14';
+        console.log( typeof pi );
+
+        // Returns 'number'
+        const pi = '3.14';
+        console.log( typeof parseFloat(pi) );
+
+        // Returns 'number'
+        const pi = '3.14';
+        console.log(typeof +pi);
+
+
+**`parseInt()`**: a method that converts a string to an integer.
+
+```js
+const HTMLBadges = prompt('How many HTML badges do you have?');
+const CSSBadges = prompt('How many CSS badges do you have?');
+
+const totalBadges = parseInt(HTMLBadges) + parseInt(CSSBadges);
+console.log(totalBadges);
+```
+
+    // Returns NaN b/c JavaScript can't find a # at the beginning of the string
+    parseInt('That is so 2008')
+
+    // Returns 202.99 in both cases
+    parseInt('202.99')
+    parseInt('202.99')
+
+
+**`parseFloat()`**: a method that converts a floating number to an integer.
+
+    // Returns `3.14` as a number
+    const pi = '3.14';
+    console.log( parseFloat(pi) );
+
+    // Returns just 1.89
+    parseFloat('1.89 light years away')
+
+
+**Unary plus operator** (the + before a variable) attempts to convert value to a number if it isn't already
+- works with integers and floating point numbers
+
+>> Output is the badges that you input in the system: such as 10 + 5 = 15
+
+    const HTMLBadges = prompt('How many HTML badges do you have?');
+    const CSSBadges = prompt('How many CSS badges do you have?');
+    const totalBadges = +HTMLBadges + +CSSBadges;
+
+    console.log(totalBadges);
+
+>> If you put in 3.14, this returns true in the console b/c of the unary plus operator turning pi to a number.
+
+    const pi = prompt('What is Pi?');
+    console.log( +pi === 3.14 );

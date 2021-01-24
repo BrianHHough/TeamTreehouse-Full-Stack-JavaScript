@@ -87,7 +87,8 @@ You need to convert the string to a number!
         console.log(typeof +pi);
 
 
-**`parseInt()`**: a method that converts a string to an integer.
+**`parseInt()`**: a method that converts a string to an integer. NOTE: `parseInt()` method cannot parse a decmial value.
+- The unary plus (+) operator converts a string to a number.
 
 ```js
 const HTMLBadges = prompt('How many HTML badges do you have?');
@@ -156,5 +157,70 @@ The [**Math object**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Re
 # Create a Random Number
 
 - Math.random() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random) returns a floating-point, pseudo-random number between 0 and 1, inclusive of 0 but not 1.
-- Math.floor() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
-- Math.ceil() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)
+- Math.floor() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor) rounds number down
+- Math.ceil() – [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil) function that rounds a number up to the next largest whole number or integer
+
+**Code runs inside out** - what's inside innermost parenthesis gets processed first
+- Example: `Math.floor( Math.random() * 6 );` --> always returns an integer between 0 and 5
+- Example: `Math.floor( Math.random() * 6 ) + 1;` --> always returns an integer between 1 and 6
+
+# Random Number Challenge - One Number Solution
+
+// Collect input from a user
+// Prompt method returns a string
+
+    const input = prompt('Please provide a number');
+
+// Convert the input to a number
+// Turns string into number variable as highInput to use
+
+    const highInput = parseFloat(input);
+
+// Conditional If Statement
+
+    if (highInput) {
+  // Use Math.random() and the user's number to generate a random number
+    
+    const randoNum = Math.floor( highInput * Math.random() ) + 1;
+  // Create a message displaying the random number
+  
+    console.log(`${randoNum} is a random number between 1 and ${highInput}.`);
+
+    } else { 
+        alert('You need to provide a number. Try again.');
+
+        console.log('You need to provide a number. Try again.');
+    }
+
+# Random Number Challenge Part II - Two Number Solution
+
+```js
+// Collect input from a user
+// Prompt method returns a string
+
+const inputLow = prompt('Please provide your lowest number');
+const inputHigh = prompt('Please provide your highest number');
+
+// Convert the input to a number
+// Turns string into number variable as highInput to use
+const lowNumber = parseInt(inputLow);
+const highNumber = parseInt(inputHigh);
+
+// Conditional If Statement
+
+if (lowNumber && highNumber) {
+  // Use Math.random() and the user's number to generate a random number
+  const randoNum = Math.floor( Math.random() * (highNumber - lowNumber + 1) ) + lowNumber;
+  
+  // Create a message displaying the random number
+  console.log(`${randoNum} is a random number between ${lowNumber} and ${highNumber}.`);
+} else { 
+  alert('You need to provide two numbers. Try again.');
+  console.log('You need to provide two numbers. Try again.');
+}
+```
+
+
+
+
+

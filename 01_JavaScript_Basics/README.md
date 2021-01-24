@@ -2,6 +2,8 @@
 
 # Display Messages w/ JS
 
+**Open Browser Inspector**
+
 COMMAND + OPTION + J
 or
 COMMAND + ALT + J = browser code inspector
@@ -555,10 +557,11 @@ _ Part X: etc. etc. with else if and else
     message = 'Access denied';
     }
 
-# Test Multiple Conditions With the && Operator
+# Test Multiple Conditions With the && Operator (And)
 Both conditions evaluated separately. Combines tests together.
+- Every single test conditions must be true for the larger, overall statement to be true.
 
-Example: does a variable lies within a specific range?
+Example: does a variable lie within a specific range?
 
 >> True
     let age = 25;
@@ -568,7 +571,62 @@ Example: does a variable lies within a specific range?
     age = 35;
     ( 20 < age && age < 30 )
 
+# Test Multiple Conditions With the || Operator (Or)
+There are times you'll want to perform an action if either of the two possible conditions is true. In this video, you'll use the [logical operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_OR) OR (|| ) to test multiple conditions.
+- just one of the tests needs to pass.
+- Resource: [Mozilla Ref on Logical Operators]()
+- Resource: 
+
+>> The following statement is TRUE because one or the other is true...so the statement is true
+
+    let agree = 'yes';
+    undefined
+
+    ( agree == 'yes' || agree === 'y' )
+    true
+
+Example: 
+ `( score === 0 && ships <= 0 && time === 0 )`
+
+# Document Your Code with Comments
+JavaScript provides ways to leave [messages](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Comments) in your code. When you or another developer review your code later, these messages (or comments) can quickly help describe what's going on in the program. You can add comments anywhere in your JavaScript code; they're ignored by a web browser and don't affect how your program works.
+
+- Single Line comment: `//`
+- Multi-line: `/* */`
+
+**To comment out something:**
+- COMMAND + K + C
+- CMD + K + C
+- CMD + /
+
+## Quiz Learnings:
+
+>> Complete the code below so that the alert message appears if either one of the conditions is true:
+
+    if ( username === '' || password === '') {
+    alert("Password or user name is missing");
+    }
+
+>>
+
+    let ships = 10;
+    let score = 0;
+    if (  ships === 0 || score === 0 ) {
+    console.log('Game over.');
+    }  else {
+    console.log('Your score is 0.');
+    }
+
+>> What will appear in the browser's console when the code runs?
+>> ANSWER: The condition fails! The AND operator requires that both conditions on either side of the && are true. Because x is not less than 10, the condition fails.
+
+    const x = 10;
+    const y = 20;
+    if (  x < 10 && y > 10 ) {
+    console.log('The condition passes.');
+    } else {
+    console.log('The condition fails.');
+    }
 
 
-
-
+ 

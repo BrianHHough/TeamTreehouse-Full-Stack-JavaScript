@@ -81,4 +81,43 @@ Rules:
 
 Functions often need specific information to perform a task. In addition to getting information from a function, you can send information to a function to change how that function works.
 
+[Parameters](https://developer.mozilla.org/en-US/docs/Glossary/Parameter) inside functions: a value that you supply to the function so the function can do something with that value.
+- They are like variables that you define in the function.
 
+>> Example: Pick random number with upper bound set in the argument of the function
+
+```js
+function getRandomNumber(upper) {
+  const randomNumber = Math.floor( Math.random() * upper ) + 1;
+  return randomNumber;
+}
+
+console.log( getRandomNumber(6) );
+console.log( getRandomNumber(100) );
+console.log( getRandomNumber(1000) );
+console.log( getRandomNumber(20) );
+```
+
+[Arguments](https://developer.mozilla.org/en-US/docs/Glossary/argument) inside functions: the values you pass through a function when you call it.
+
+>> Example:
+ ```js
+    function getRandomNumber(upper) {
+    const randomNumber = Math.floor( Math.random() * upper ) + 1;
+    return randomNumber;
+    }
+
+    console.log( getRandomNumber(6) );
+    console.log( getRandomNumber(100) );
+    console.log( getRandomNumber(1000) );
+    console.log( getRandomNumber(20) );
+```
+
+# Challenge Task
+Write a function to call `returnVALUE` and accept one argument named value, and return that argument stored in the function.
+
+```js
+function returnValue(value) {
+  return value
+}
+```

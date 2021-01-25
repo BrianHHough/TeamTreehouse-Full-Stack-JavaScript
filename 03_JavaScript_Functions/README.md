@@ -33,3 +33,52 @@ You only have to write the function once, but you can call it multiple times (se
 
 # Return a Value from a Function
 
+Functions can also give something back when they finish. This is called ["returning a value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return)," and it's common when working with functions. To return a value from a function, use the return keyword, which creates what's called a "return statement."
+
+To return a value from a function - return statement that immediately jumps out of the current function and provides the value to return to use in your program.
+
+>> Alert to the browser
+
+    function getRandomNumber() {
+    const randomNumber = Math.floor( Math.random() * 6 ) + 1;
+    return randomNumber;
+    }
+    alert( getRandomNumber() );
+
+>> Print to the console
+
+    function getRandomNumber() {
+    const randomNumber = Math.floor( Math.random() * 6 ) + 1;
+    return randomNumber;
+    }
+    console.log( getRandomNumber() );
+
+>> Store in a variable that you can use later with a call to the function
+
+    function getRandomNumber() {
+    const randomNumber = Math.floor( Math.random() * 6 ) + 1;
+    return randomNumber;
+    }
+
+    const dieRoll = getRandomNumber();
+
+
+# Using Multiple return Statements
+
+If the field value is equal to an empty string...if yes, then returns true! False if it has something in it.
+
+Rules:
+- JS engine puts the function to memory.
+- The `return` JS keyword is used to send back a value from a function.
+    - Return exits a function and sends a value back to the spot in the program where the function was called.
+- When a return statement runs, it causes JS engine to exit immediately. Return should be the LAST line of code to run.
+    - As soon as the function encounters a return statement, it exits the function and returns a value.
+- Return statement can only return ONE thing (string, boolean, number, content of variable, etc.) but you can't return multiple items.
+    - You can have more than one return statement in a function...but only one ever runs.
+
+
+# Function Parameters and Arguments
+
+Functions often need specific information to perform a task. In addition to getting information from a function, you can send information to a function to change how that function works.
+
+

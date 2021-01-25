@@ -18,7 +18,7 @@ Any character inside of quotes -- including numbers -- are strings.
     var age;
     var age = 26;
 
-# Doing Basic Math
+# Doing Basic Math 
 
 | Change the Value of a Variable | Shorthand Version |
 | :---: | :---: |

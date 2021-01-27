@@ -221,6 +221,3 @@ if (lowNumber && highNumber) {
 ```
 
 
-
-
-

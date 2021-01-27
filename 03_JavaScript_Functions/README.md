@@ -81,10 +81,11 @@ Rules:
 
 Functions often need specific information to perform a task. In addition to getting information from a function, you can send information to a function to change how that function works.
 
-[Parameters](https://developer.mozilla.org/en-US/docs/Glossary/Parameter) inside functions: a value that you supply to the function so the function can do something with that value.
+[Parameters](https://developer.mozilla.org/en-US/docs/Glossary/Parameter) inside functions: a variable in which the function stores information passed to it.
+- a value that you supply to the function so the function can do something with that value.
 - They are like variables that you define in the function.
 
->> Example: Pick random number with upper bound set in the argument of the function
+>> Example: Pick random number with upper bound set in the argument of the function.
 
 ```js
 function getRandomNumber(upper) {
@@ -121,3 +122,113 @@ function returnValue(value) {
   return value
 }
 ```
+
+# Pass Multiple Arguments to a Function
+
+Functions can accept more than one argument. When calling a function, you're able to pass multiple arguments to the function; each argument gets stored in a separate parameter and used as a discrete variable within the function.
+- Each argument gets stored in a separate parameter.
+
+
+> Area of a shape
+
+```js
+function getArea(width, length, unit) {
+  const area = width * length;
+  return `${area} ${unit}`;
+}
+// enter statement w/ return statement on 2nd line...
+getArea(4, 33, 'sq ft');
+"132 sq ft"
+
+```
+
+
+# Challenge Task
+
+>> Create a function named max that accepts two numbers as arguments (name the parameters whatever you would like). The function should return the larger of the two numbers. HINT: You'll need to use a conditional statement to test which of the two parameters is the largest.
+
+```js
+function max(numBig, numSmall) {
+  if (numBig > numSmall) {
+    return numBig;
+  } else {
+    return numSmall;
+  }
+}
+
+```
+
+# Variable Scope
+
+JavaScript provides separate "scopes" for each function. Any variables created within a function are not accessible outside the function, and cannot interact variables created in another function.
+
+Scope determines what is accessible under which contexts.
+
+**Function scope**
+```js
+let person = 'Lee';
+
+
+function greeting() {
+  // function scope
+  let person = 'Meg';
+  alert(`Hi, ${person}!`);
+}
+
+function greeting2() {
+  let person = 'Robert';
+  alert(`Good morning, ${person}!`);
+}
+
+greeting();
+alert(`Hi, ${person}`);
+greeting2();
+```
+
+**Global scope** - larger universe. You can change the value of a function in the global scope from within the inside function.
+
+>>> All three alerts are for Meg now. Key to avoid this is to change variables to be clear they can't be changed...
+
+```js
+// Global scope
+let person = 'Lee';
+
+
+function greeting() {
+  // function scope
+  let person = 'Meg';
+  alert(`Hi, ${person}!`);
+}
+
+function greeting2() {
+  person = 'Robert';
+  alert(`Good morning, ${person}!`);
+}
+
+greeting();
+alert(`Hi, ${person}`);
+greeting2();
+```
+
+Functions are self-contained blocks of replicable code.
+- use let/const keywords
+
+
+# Function Declarations vs. Function Expressions
+
+There is another syntax for creating a function that is called a "function expression."
+
+**Anonymous Function:** a function without a name after the function keyword.
+- the name comes from the variable.
+- store function as a variable and create a statement 
+
+```js
+const getRandomNumber = function(upper) {
+  const randomNumber = Math.floor(Math.random() * upper ) + 1;
+  return randomNumber;
+};
+
+getRandomNumber(10);
+```
+
+**Function Declaration**: you can call these before they're defined.

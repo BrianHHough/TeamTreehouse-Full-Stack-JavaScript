@@ -329,9 +329,136 @@ const getArea = (width, length, unit) => {
 # Concise Arrow Function Syntax
 Arrow functions are already less verbose than function declarations and function expressions, but you can write them in a more concise way.
 
-**Arrow Functions with One Parameter**
+### **Arrow Functions with One Parameter**
 If your arrow function accepts a single argument, like the square function below, you can omit the parentheses:
 
+```js
+const square = x => {
+  return x * x;
+}
+
+square(10); // 100
+
+```
+
+### **Arrow Functions with Multiple Parameters**
+JavaScript does not allow you to remove the parentheses from arrow functions with no or multiple parameters; only functions with a single parameter.
+
+❌ The following arrow function expression (without parentheses) throws a syntax error ❌ 
+
+```js
+const getArea = width, length, unit => {
+  const area = width * length;
+  return `${area} ${unit}`;
+}
+
+getArea(10, 20, 'sq ft');
+// Uncaught SyntaxError: Missing initializer in const declaration
+
+```
+
+✅ You need to include the parentheses when working with multiple (or no) parameters: ✅ 
+
+```js
+const getArea = (width, length, unit) => {
+  const area = width * length;
+  return `${area} ${unit}`;
+}
+
+getArea(10, 20, 'sq ft');  // 200 sq ft
+```
+
+### **Arrow Functions as One-line Statements** 
+
+If your function body (the part between the curly braces) is only one line of code, you can make the function more concise by omitting the return keyword and placing everything on one line:
+
+```js
+const square = x => { x * x };
+```
+
+When you omit the return keyword in a single-line function, the value is returned automatically (or implicitly). This is called an **implicit return**.
+
+In fact, when using an implicit return, you don't even need the curly braces (they are optional). You can reduce the arrow syntax further by writing the function like this:
+
+```js
+const square = x => x * x;
+const multiply = (x, y) => x * y;
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+```
+
+### **Single-line Functions with No Parameters**
+Finally, a single-line arrow function with no parameters requires parentheses before the arrow (=>) token, otherwise JavaScript produces a syntax error. For example:
+
+❌ This is wrong ❌ 
+```js
+const name = 'Jesse';
+const greeting = => alert(`Greetings, ${name}!`);
+greeting(); // Uncaught SyntaxError: Unexpected token '=>'
+```
+
+✅ The following is the correct way ✅ 
+```js
+const name = 'Jesse';
+const greeting = () => alert(`Greetings, ${name}!`);
+```
+
+This shorter syntax might seem strange at first, and take a little getting used to, but compared to the following expression:
+
+```js
+const greeting = function() {
+  alert(`Greetings, ${name}!`);
+};
+```
+
+it can make parts of your code more concise and easier to read. However, even if your function meets the criteria for concise syntax, it's still perfectly acceptable to use the standard arrow function syntax.
+
+
+# JavaScript Function Quiz Insights
+
+### Complete the code below to create an arrow function with two parameters: `greeting` and `name`:
+
+```js
+const sayGreeting = (greeting, name) => {
+  return `${greeting}, ${name}.`;
+}
+```
+
+
+### Which is functionllay the same as the below function?
+```js
+const square = function(x) {
+  return x * x;
+};
+```
+
+This one: 
+```js
+const square = x => {
+  return x * x;
+};
+```
+
+### Arrow function
+```js
+const add = (num1, num2) => {
+  return num1 + num2;
+};
+```
+
+### What's functionally equivalent to the function below?
+```js
+const sayYay = function() {
+  return "Yay!";
+};
+```
+
+This: 
+```js
+const sayYay = () => "Yay!";
+```
+
+This function doesn't return a value. You can omit the `return` keyword only if the arrow function is on a single line without { }.
 
 
 

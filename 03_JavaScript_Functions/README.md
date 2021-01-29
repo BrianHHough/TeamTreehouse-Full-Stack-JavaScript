@@ -185,7 +185,9 @@ alert(`Hi, ${person}`);
 greeting2();
 ```
 
-**Global scope** - larger universe. You can change the value of a function in the global scope from within the inside function.
+**Global scope** - larger universe. You can change the value of a function in the global scope from within the inside function. Global scope is when a variable is accessible anywehre inside a program -- in the body of the program and within functions.
+- Variables defined outside a function are called `global variables`.
+- Variables defined within a function are `local variables`.
 
 >>> All three alerts are for Meg now. Key to avoid this is to change variables to be clear they can't be changed...
 
@@ -234,12 +236,104 @@ getRandomNumber(10);
 
 **Function Declaration**: you can call these before they're defined.
 
-**Hoisting** when you call a function before it loads -- only when the JS engine reaches the line of code that it's on.
-- this leads to an error
-- you cannot do this
+**Hoisting** when you call a function before it loads -- only when the JS engine reaches the line of code that it's on. Hoisting is the behavior where the JS engine moves function declarations to the top of their scope before code execution.
 - function MUST come before the logging.
 
 # JS Quiz Insights
 - When you declare a variable within a function, is that variable only accessible within that function?
   - Yes but only if you use a `let`, `const`, or `var` keywoard insight the function to declare the variable.
+
+- Given the following code what happens?
+```js
+let message = "Welcome!";
+function setMessage() {
+  message = "Goodbye!";
+}
+setMessage();
+alert(message);
+```
+- Because a `let`, `const`, or `var` keyword is not used to declare a message variable inside the function, the function overwrites the value in the global variable message.
+- the answer is "Goodbye" is written b/c of the above!
+
+- Given the following code what happens?
+```js
+const name = "Trish";
+function setName() {
+  const name = "Sarah";
+}
+setName();
+alert(name);
+
+```
+- The name variable outside the function is a global variable, so the `alert()` (which is also outside the function) accesses global variable.
+- the answer is "Trish" is written b/c of the above!
+
+
+
+# Create Functions Using Arrow Syntax
+
+The two methods of writing functions we've learned about thus far: 
+
+(1.) **Declaration Function:** defines a function using the function keyword first, followed by name of function
+- hoised (while arrow functions aren't)
+
+```js
+function square(x) {
+  return x * x;
+}
+```
+
+(2.) **Anonymous Function:** a function without a name that's assigned to a variable
+
+```js
+const square = function(x) {
+  return x * x;
+}
+```
+
+There's one more to learn:
+
+(3.) **Arrow Functions:** you omit function keyword and after (), you add the => function. Body remains the same
+- are anonymous function b/c no name and you call/reference them using the variable name.
+- dont' replace function expressions, just a new way
+- aren't hoisted while declaration functions are. 
+
+Get a random number between 1 and 6
+
+```js
+const getRandomNumber = () => {
+  const randomNumber = Math.floor( Math.random() * 6 ) + 1;
+  return randomNumber;
+};
+```
+
+
+### Turn a declaration function into an arrow function expression
+
+Original in declaration function...
+```js
+function getArea(width, length, unit) {
+  const area = width x height;
+  return `${area} ${unit}`;
+}
+```
+New as an arrow expression
+```js
+const getArea = (width, length, unit) => {
+  const area = width x height;
+  return `${area} ${unit}`;
+}
+```
+
+
+# Concise Arrow Function Syntax
+Arrow functions are already less verbose than function declarations and function expressions, but you can write them in a more concise way.
+
+**Arrow Functions with One Parameter**
+If your arrow function accepts a single argument, like the square function below, you can omit the parentheses:
+
+
+
+
+
 

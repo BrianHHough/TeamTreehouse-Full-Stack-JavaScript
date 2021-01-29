@@ -220,7 +220,8 @@ There is another syntax for creating a function that is called a "function expre
 
 **Anonymous Function:** a function without a name after the function keyword.
 - the name comes from the variable.
-- store function as a variable and create a statement 
+- store function as a variable and creates a statement by assigning a function to a variable --> `;`
+- use name of variable with a function and a semicolon
 
 ```js
 const getRandomNumber = function(upper) {
@@ -232,3 +233,13 @@ getRandomNumber(10);
 ```
 
 **Function Declaration**: you can call these before they're defined.
+
+**Hoisting** when you call a function before it loads -- only when the JS engine reaches the line of code that it's on.
+- this leads to an error
+- you cannot do this
+- function MUST come before the logging.
+
+# JS Quiz Insights
+- When you declare a variable within a function, is that variable only accessible within that function?
+  - Yes but only if you use a `let`, `const`, or `var` keywoard insight the function to declare the variable.
+

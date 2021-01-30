@@ -460,7 +460,38 @@ const sayYay = () => "Yay!";
 
 This function doesn't return a value. You can omit the `return` keyword only if the arrow function is on a single line without { }.
 
+### Arrow functions hoisted to the top of their scope?
+- NO, just like function expressions are not hoisted.
 
 
+# Default Function Parameters
+JS lets you assign default parameters to your functions so if you don't pass a certain argument to the function, it defaults to a certain value.
+
+The **default parameter** acts as safeguards and prevents the function from returning an undefined value.
+
+For example, there's a function sayGreeting that takes the param `name` -- write as a function declaration. The function now expects a name value passed through it as an argument.
+```js
+function sayGreeting(name) {
+  return `Good morning, ${name}!`;
+}
+```
+
+If you call `sayGreeting();` in the terminal...it returns the following: 
+`"Good morning, undefined!"`
+
+Undefined is one of JS' built in value b/c no value assigned to the name parameter. Missing a **function argument** can potentially break the function. 
+
+Now if you pass student as a **default function parameter**, in this way:
+```js
+function sayGreeting(name = 'student') {
+  return `Good morning, ${name}!`;
+}
+```
+
+If you call `sayGreeting();` in the terminal...it returns the following:
+`"Good morning, student!"`
+
+Or `sayGreeting('Maria');` returns:
+`"Good morning, Maria!"`
 
 

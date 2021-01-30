@@ -469,6 +469,8 @@ JS lets you assign default parameters to your functions so if you don't pass a c
 
 The **default parameter** acts as safeguards and prevents the function from returning an undefined value.
 
+>> Example #1
+
 For example, there's a function sayGreeting that takes the param `name` -- write as a function declaration. The function now expects a name value passed through it as an argument.
 ```js
 function sayGreeting(name) {
@@ -480,6 +482,8 @@ If you call `sayGreeting();` in the terminal...it returns the following:
 `"Good morning, undefined!"`
 
 Undefined is one of JS' built in value b/c no value assigned to the name parameter. Missing a **function argument** can potentially break the function. 
+
+>> Example #2
 
 Now if you pass student as a **default function parameter**, in this way:
 ```js

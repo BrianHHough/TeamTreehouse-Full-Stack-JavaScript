@@ -467,9 +467,9 @@ This function doesn't return a value. You can omit the `return` keyword only if 
 # Default Function Parameters
 JS lets you assign default parameters to your functions so if you don't pass a certain argument to the function, it defaults to a certain value.
 
-The **default parameter** acts as safeguards and prevents the function from returning an undefined value.
+The [**default parameter**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters) acts as safeguards and prevents the function from returning an undefined value.
 
-### Example #1
+>> Example #1
 
 For example, there's a function sayGreeting that takes the param `name` -- write as a function declaration. The function now expects a name value passed through it as an argument.
 ```js
@@ -483,7 +483,7 @@ If you call `sayGreeting();` in the terminal...it returns the following:
 
 Undefined is one of JS' built in value b/c no value assigned to the name parameter. Missing a **function argument** can potentially break the function. 
 
-### Example #2
+>> Example #2
 
 Now if you pass student as a **default function parameter**, in this way:
 ```js
@@ -498,4 +498,158 @@ If you call `sayGreeting();` in the terminal...it returns the following:
 Or `sayGreeting('Maria');` returns:
 `"Good morning, Maria!"`
 
+>> Example #3
 
+Now if you pass in default param for `name` and an argument that isn't a default pram (`greeting`)...
+```js
+function sayGreeting(greeting, name = 'student') {
+  return `${greeting}, ${name}!`;
+}
+```
+If you call `sayGreeting('Hi there');` in the console...notice how the greeting is defined but the name isn't... The name will return `student` by default and lead to the following:
+
+`"Hi there, student!"`
+
+>> Example #4
+
+If we want to bypass the greeting default parameter and adjust the name, what do we do?
+
+The following below returns the way it does b/c the first input is the argument passed in...for the first template literal parameter. The function expects you to put in a value.
+```js
+sayGreeting('Guil')
+"Guil, student!"
+```
+
+To fix this, we have to [pass in undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters#Passing_undefined_vs._other_falsy_values) to instruct JS engine to use default value to the first parameter (a placeholder). This [undefined](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) is like a placeholder.
+
+This in the console `sayGreeting(undefined, 'Guil')` returns the following:
+`"Good morning, Guil!"`
+
+>> Example #5
+
+Let's take the area function example and use default parameters
+```js
+function getArea(width, length, unit) {
+  const area = width * length;
+  return `${area} ${unit}`;
+}
+```
+This input in console `getArea(5, 5, 'in.');` returns the following:
+`"25 in."`
+
+Let's add in a default param for width...like this:
+```js
+function getArea(width = 5, length, unit) {
+  const area = width * length;
+  return `${area} ${unit}`;
+}
+```
+
+Now, if we put this into the console `getArea(undefined, 5, 'in.');` b/c length already defaults as 5, the output is again 25!
+`"25 in."`
+
+# Challenge Task
+
+Turn the following function into an arrow function:
+```js
+greet('cool coders');
+
+function greet(val) {
+  return `Hi, ${val}!`;
+}
+```
+
+Arrow function (answer) is here:
+```js
+const greet = (name) => {
+  return `Hi, ${name}!`;
+}
+
+greet('val');
+greet('cool coders');
+
+```
+
+# Descriptive Comments for Functions
+Developers often use descriptive comments in their programs for function documentation. The comments provide a high-level overview of what a function does, its parameters, and return value.
+
+There is a standard syntax you can use to document functions -- it's known as [JSDoc](https://jsdoc.app/index.html), and the format looks like this:
+
+```js
+/**
+ * [A short description of the myFunc function]
+ *
+ * @param {[param type]} param1 - [parameter description]
+ * @param {[param type]} param2 - [parameter description]
+ * @returns {[return type]} [documents the function's return value]
+ */
+
+function myFunc( param1, param2 ) {
+  // function returns a value...
+}
+```
+
+When using the JSDoc approach, place a comment immediately before the function you are documenting. Each comment begins with /**. Let's go over each line in the comment sequence:
+
+- The first part of the comment is a [short and simple description](https://jsdoc.app/about-getting-started.html) of what the function does. Below the description, you add more information with @ tags.
+- The @param tag provides the name, type, and description of a function parameter. Use one @param tag for each parameter you define.
+- The @returns tag (also @return) documents the value the function returns with a type and description.
+
+Besides @param and @returns, there are other useful tags like @throws, @example, @author, and [many more](https://jsdoc.app/index.html#block-tags).
+
+### Document a Function
+Below is an example of how you might document the getArea function using the JSDoc format:
+
+```js
+/**
+ * Calculates and returns the area of a rectangle.
+ *
+ * @param {number} width - The width of the rectangle.
+ * @param {number} length - The length of the rectangle.
+ * @param {string} unit - The unit of measurement.
+ * @returns {string} The area of the rectangle and unit of measure.
+ */
+
+function getArea(width, length, unit) {
+  const area = width * length;
+  return `${area} ${unit}`;
+}
+```
+
+### The Power of JSDoc
+Besides its descriptive format, the JSDoc tool itself has other useful and powerful features. JSDoc is also a documentation generator for JavaScript.
+
+For example, when you add documentation comments directly to your source code, JSDoc can scan your code and [generate an HTML documentation website](https://jsdoc.app/about-getting-started.html#generating-a-website) for you. However, you'll need to install special tools to run this feature -- you'll learn about some of these tools later in your JavaScript learning journey.
+
+JSDoc also has built-in support in text editors like [Visual Studio Code](https://code.visualstudio.com/). VS Code can use the [JSDoc annotations](https://code.visualstudio.com/docs/languages/javascript#_jsdoc-support) to provide code completion, hover information, and function signature information to help you write code more quickly and correctly.
+
+### Take Advantage of JSDoc Comments
+Keep in mind that you don't have to install any extra tools to simply use the JSDoc syntax and format in your code.
+
+Using a consistent and descriptive commenting approach makes your functions more predictable. Other developers who need to learn about your functions will have a faster and easier way to identify each part of a function.
+
+### Resources
+- [JSDoc](https://jsdoc.app/index.html)
+- [JSDoc cheat sheet](https://devhints.io/jsdoc)
+
+
+# Function Challenge
+
+In this practice challenge, you will make the random number function you created earlier more flexible. It should be able to produce random values between 10 and 100 or 0 and 6.
+
+Original Starting Place:
+```js
+/**
+ * Returns a random number between two numbers.
+ *
+ * @param {number} lower - The lowest number value.
+ * @param {number} upper - The highest number value.
+ * @return {number} The random number value.
+ */
+
+Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+
+// Call the function and pass it different values
+```
+
+Final Version:

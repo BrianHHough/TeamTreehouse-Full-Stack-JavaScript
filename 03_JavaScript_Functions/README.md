@@ -164,6 +164,8 @@ JavaScript provides separate "scopes" for each function. Any variables created w
 
 Scope determines what is accessible under which contexts.
 
+Scope is the context in which a variable can be accessed, such as within a function, or within the global scope of the entire program.
+
 **Function scope**
 ```js
 let person = 'Lee';
@@ -633,7 +635,7 @@ Using a consistent and descriptive commenting approach makes your functions more
 - [JSDoc cheat sheet](https://devhints.io/jsdoc)
 
 
-# Function Challenge
+# Function Challenge + Testing for Number Arguments
 
 In this practice challenge, you will make the random number function you created earlier more flexible. It should be able to produce random values between 10 and 100 or 0 and 6.
 
@@ -652,4 +654,90 @@ Math.floor(Math.random() * (6 - 1 + 1)) + 1;
 // Call the function and pass it different values
 ```
 
-Final Version:
+The below functions are what solves this challenge. 
+
+### Final Version #1: See V2 for the actual answer w/ the test
+```js
+function getRandoNum(lower, upper) {
+  const randomNumber = Math.floor(Math.random() * (upper - lower + 1)) + lower;
+  return randoNum
+}
+/// This returns 3 numbers in the console to test.
+console.log( getRandoNum(1, 6) );
+console.log( getRandoNum(10, 100) );
+console.log( getRandoNum(200, 500) );
+```
+
+### Final Version #2: more compact -- However, we have to add a [test to ensure we are entering numbers](https://dev.to/skptricks/check-if-variable-is-a-number-in-javascript-1f10). If not, the function will return `NaN` if a string is passed into the param section. We'll use the [isNaN()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN) method which returns  `true` if the value isn't a number, and `false` if it is. Then we use [`throw`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) and JS' [`Error`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) built in object for throwing an exception. 
+
+```js
+/**
+ * Returns a random number between two numbers.
+ *
+ * @param {number} lower - The lowest number value.
+ * @param {number} upper - The highest number value.
+ * @return {number} The random number value.
+ */
+
+function getRandoNum(lower, upper = 100) {
+  // if either lower or upper num is a string...display an error
+  if ( isNaN(lower) || isNaN(upper) ) {
+    throw Error('Both arguments must be numbers.');
+    
+  }
+  return randomNumber = Math.floor(Math.random() * (upper - lower + 1)) + lower;
+}
+
+// Call the function and pass it different values
+console.log( getRandoNum(1, 6) );
+console.log( `${getRandoNum(10)} is a random number between 10 and 100.` );
+console.log( getRandoNum(200, 'three hundred') );
+```
+
+`This returns in the console:`
+- 4
+- random.js:19 53 is a random number between 10 and 100.
+- Uncaught Error: Both arguments must be numbers.
+
+This is about **[first-class functions](https://developer.mozilla.org/en-US/docs/Glossary/First-class_Function)**.
+
+Meaning....
+
+### You can store a function in a variable:
+```js
+const multiply = function(a, b) {
+  return a * b;
+};
+```
+
+### Pass a function as an argument to other functions:
+```js
+function sayYay() {
+  return 'Yay';
+}
+
+/*
+  - The argument passed for 'func' should be a reference to a function
+  - That function gets called in console.log
+*/
+function greeting(func, name) {
+  console.log( `${func()}, ${name}!` );
+}
+
+/* 
+  - A reference to the sayYay function gets passed to the greeting function as an argument
+  - sayYay returns the string 'Yay', so the greeting function logs 'Yay, Lee!'
+*/
+greeting(sayYay, 'Lee'); // Yay, Lee!
+```
+
+### You can even set a function to return another function:
+```js
+function sayYay() {
+  return function() {
+    console.log('Yay!');
+  }
+}
+```
+This lets you take advantage of powerful design patterns you'll learn about in later courses.
+

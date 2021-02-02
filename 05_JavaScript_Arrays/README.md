@@ -188,8 +188,163 @@ scienceStudentsCopy.push('Marvin');
 
 # Using a 'for' Loop to Iterate Over an Array
 The for loop provides one way to loop (or iterate) through the elements in an array.
-- for - MDN
-- Common array operations - MDN
+- [for - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
+- [Common array operations - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Common_operations)
 
 
+### Make the array relative to the number of students in an array + access each student in the array
+
+```js
+const students = ['Lee', 'Jan', 'Mali', 'Sariah'];
+// checks if i is less than the length (4), so it runs. Happens until index length is 4 and then the function no longer runs.
+for ( let i = 0; i < students.length; i++ ) {
+  // access the element in the array and include element's index value
+  console.log( students[i] );
+}
+```
+
+# Loop Through an Array
+Use the for loop to iterate over an array of song names and display them on a web page.
+
+```js
+const playlist = [
+  'So What',
+  'Respect',
+  'What a Wonderful World',
+  'At Last',
+  'Three Little Birds',
+  'The Way You Look Tonight',
+  'Cool Song',
+];
+
+// loop that runs as many times as items in array
+function createListItems (arr) {
+  let items = '';
+  for ( let i = 0; i < arr.length; i++ ) {
+    items += `<li>${ arr[i] }</li>`;
+  }
+  return items;
+}
+
+// selects main element and displays it
+document.querySelector('main').innerHTML = `
+  <ol>
+    ${createListItems(playlist)}
+  </ol>
+`;
+```
+
+### Get the average of an array of scores
+In the following example, a for loop accesses each number in the scores array and adds it to the current value of total. When the loop completes, the console displays the average score by dividing the value of total by the length of the scores array.
+
+```js
+const scores = [ 20, 50, 75, 100, 115 ];
+let total = 0;
+
+for ( let i = 0; i < scores.length; i++ ) {
+  total += scores[i];
+}
+
+console.log( total / scores.length );
+```
+
+
+# Use a for loop to iterate over the values inside the temperatures array. Start from the first element (100) to the last (10). Inside the loop, log the current array value to the console. Use i to represent the counter variable.
+
+Solution:
+```js
+const temperatures = [100, 90, 99, 80, 70, 65, 30, 10];
+let counter = 0;
+
+for ( let i = 0; i < temperatures.length; i++ ) {
+  counter += temperatures[i];
+  console.log(temperatures[i]);
+}
+```
+
+# Useful Array Methods
+As you gain more experience with arrays, you'll want to start learning and experimenting with other more advanced methods. In this video, we'll explore other common and useful array methods.
+
+- [join(', ') - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join): this method takes an array and returns a string holding all elements in array, separated by a character, like a comma, comma + space, etc.
+- [includes(valueToFind) - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes): method that determines whether an array includes a certain value among entries and returns either true or false.
+- [indexOf(searchElement) - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf): method that returns the index (position) of an element in an array. If it can't find the index of a particular element in the array, returns `-1`
+
+### Examples of array methods
+
+```js
+const daysInWeek = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday'
+];
+
+daysInWeek.join(', ');
+
+const fruit = [
+  'apple', 
+  'orange', 
+  'grapefruit', 
+  'pineapple', 
+  'strawberry'
+];
+
+fruit.includes('apple');
+fruit.indexOf('apple');
+fruit.indexOf('pear');
+
+```
+
+# Challenge: Use the array method that combines all of the elements inside the planets array into a single string. The final string should separate the array elements by a comma and space. Log the final string value to the console. Next, use the method that returns the position of 'Saturn' in the planets array. Log the return value to the console.
+
+```js
+const planets = ['Earth','Mars','Saturn','Mecury','Jupiter','Venus','Uranus','Neptune'];
+
+console.log(planets.join(', '));
+console.log(planets.indexOf('Saturn'));
+```
+
+
+# Search for a Value in an Array
+Write a program using the join(), includes(), and indexOf() array methods you learned about earlier.
+
+Let's you search if a product is in stock or not. Lists all the products in stock.
+
+JavaScript Component:
+```js
+const inStock = ['pizza', 'cookies', 'eggs', 'apples', 'milk', 'cheese', 'bread', 'lettuce', 'carrots', 'broccoli', 'potatoes', 'crackers', 'onions', 'tofu', 'limes', 'cucumbers'];
+// prompt to search
+const search = prompt('Search for a product.');
+// holds message for user
+let message;
+
+// if the inStock array includes item in the search variable
+if ( inStock.includes(search) ) {
+  message = `Yes, we have <strong>${search}</strong>.`;
+} else {
+  message = `Sorry, we do not have <strong>${search}</strong>.`;
+}
+
+document.querySelector('main').innerHTML = `<p>${message}</p>`;
+```
+
+HTML Component:
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript Arrays</title>
+    <link href="css/style.css" rel="stylesheet"> 
+  </head>
+  <body>
+    <h1>Product List</h1>
+    <main></main>
+    <script src="js/search-list.js"></script>
+  </body>
+</html>
+```
 

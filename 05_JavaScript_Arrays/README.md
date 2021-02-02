@@ -308,12 +308,16 @@ console.log(planets.indexOf('Saturn'));
 ```
 
 
-# Search for a Value in an Array
+# Search for a Value in an Array + Locate and Join Array Elements
 Write a program using the join(), includes(), and indexOf() array methods you learned about earlier.
 
 Let's you search if a product is in stock or not. Lists all the products in stock.
 
-JavaScript Component:
+- [Array.indexOf() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
+- [toLowerCase() - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+- [Falsy values - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+
+### JavaScript Component:
 ```js
 const inStock = ['pizza', 'cookies', 'eggs', 'apples', 'milk', 'cheese', 'bread', 'lettuce', 'carrots', 'broccoli', 'potatoes', 'crackers', 'onions', 'tofu', 'limes', 'cucumbers'];
 // prompt to search
@@ -321,17 +325,23 @@ const search = prompt('Search for a product.');
 // holds message for user
 let message;
 
-// if the inStock array includes item in the search variable
-if ( inStock.includes(search) ) {
-  message = `Yes, we have <strong>${search}</strong>.`;
+// If you search and return nothing (empty string)...display all of the elements in stock
+if ( !search ) {
+  message = `<strong>In stock:</strong> ${inStock.join(', ')}`;
+  // However, if the inStock array includes item in the search variable
+  // Convert input text to all lowercase letters
+} else if ( inStock.includes(search.toLowerCase()) ) {
+  // The # is going to search the array for the inStock product and return it's index starting from 0, so products index return starting with the number 1
+  message = `Yes, we have <strong>${search}</strong>. It's #${inStock.indexOf(search.toLowerCase()) + 1} on the list!`;
 } else {
   message = `Sorry, we do not have <strong>${search}</strong>.`;
 }
 
+// check for any null or empty values
 document.querySelector('main').innerHTML = `<p>${message}</p>`;
 ```
 
-HTML Component:
+### HTML Component:
 ```html
 <!DOCTYPE html>
 <html>
@@ -347,4 +357,130 @@ HTML Component:
   </body>
 </html>
 ```
+
+
+# Locate and Join Array Elements
+
+### Why repeat search.toLowerCase() vs. assigning it to a variable and reusing it? For example:
+
+```js
+const search = prompt('Search for a product.');
+const searchText = search.toLowerCase();
+
+inStock.includes(searchText);
+inStock.indexOf(searchText);
+```
+
+If the user clicks the "Cancel" button in the prompt dialogue, the variable searchText would point to null. The JavaScript interpreter throws an error when you call toLowerCase() on a returned null value -- there's nothing to convert to lowercase:
+
+```js
+const search = prompt('Search for a product.');
+const searchText = search.toLowerCase();
+// Uncaught TypeError: Cannot read property 'toLowerCase' of null
+```
+
+
+Following is another way you might convert the value assigned to search to all lowercase. If search points to a truthy value (not null, for example), then convert it to lowercase:
+```js
+const inStock = [ ... ];
+let message;
+let search = prompt('Search for a product.');
+
+if ( search ) {
+  search = search.toLowerCase();
+}
+
+if ( !search ) {
+  message = `<strong>In stock:</strong> ${inStock.join(', ')}`;
+} else if ( inStock.includes(search) ) {
+  message = `Yes, we have <strong>${search}</strong>. It's #${inStock.indexOf(search) + 1} on the list!`;
+} else {
+  message = `Sorry, we do not have <strong>${search}</strong>.`;
+}
+```
+
+That way, you don't have to repeat calling toLowerCase() in the conditional.
+
+### A different approach with only indexof()
+There's another way you might write the product search without having to use includes() to check whether the inStock array includes a specific value. Remember, indexOf() returns the index of a given element inside an array, or -1 if it's not present.
+
+First, pass the search value to indexOf(). In the else if clause, check if the product index is not -1. Then use the value of productIndex + 1 to display the product's number in the list:
+
+```js
+const inStock = ['pizza', 'cookies', 'eggs', 'apples', 'milk', 'cheese', 'bread', 'lettuce', 'carrots', 'broccoli', 'potatoes', 'crackers', 'onions', 'tofu', 'limes', 'cucumbers'];
+let search = prompt('Search for a product.');
+let productIndex;
+let message;
+
+if ( search ) {
+  search = search.toLowerCase();
+  productIndex = inStock.indexOf(search);
+}
+
+if ( !search ) {
+  message = `<strong>In stock:</strong> ${inStock.join(', ')}`;
+} else if ( productIndex !== -1 ) {
+  message = `Yes, we have <strong>${search}</strong>. It's #${productIndex + 1} on the list!`;
+} else {
+  message = `Sorry, we do not have <strong>${search}</strong>.`;
+}
+```
+
+
+# Quiz Insights
+
+Complete the code to log each element in the times array to the console:
+```js
+const times = [ 1.22, 1.75, 2.10, 2.55 ];
+for ( let i = 0; i < times.length; i++ ) {
+  console.log(times[i]); 
+}
+```
+
+Complete the code below by writing the method that checks whether the colors array holds the value firebrick among its entries:
+```js
+const colors = [ 'tomato',  'crimson', 'darkred', 'firebrick' ];
+colors.includes('firebrick'); // true
+```
+
+Complete the code below to assign the totalScores variable the number of elements in the scores array:
+```js
+const scores = [ 76, 79, 85, 87, 89 , 90, 99 ];
+const totalScores = scores.length ;
+```
+
+Complete the code by adding the array method that combines all of the elements in an array into a single string:
+```js
+const students = ["Sierra", "Kaya", "Rafael", "Charlie"];
+const message = `Hello, ${students.join(', ')}`;
+```
+
+
+# What is a Multidimensional Array?
+Learn how to create and work with arrays that contain other arrays, or "multidimensional arrays".
+- [Creating a two-dimensional array - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Creating_a_two-dimensional_array)
+- [How can I create a two-dimensional array in JavaScript? - Stack Overflow](https://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript)
+
+**Multidimensional Array:** an array within an array
+
+Example:
+
+```js
+const grades = [
+  [80, 90, 100, 95],
+  [75, 95, 85, 100]
+];
+```
+
+| Grades|
+| :---: |
+| index | value |
+| :---: | :---: |
+| 0 | [80, 90, 100, 95] | grades[0] |
+| 1 | [75, 95, 85, 100] | grades[1] |
+
+
+
+
+
 

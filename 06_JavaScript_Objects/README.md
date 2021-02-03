@@ -259,7 +259,7 @@ const personProps = Object.keys(person);
 console.log(personProps);
 
 ```
-```shell
+```zsh
 > (4) ["name", "role", "skills", "isTeacher"]
 ```
 

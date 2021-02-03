@@ -479,8 +479,179 @@ const grades = [
 | 0 | [80, 90, 100, 95] | grades[0] |
 | 1 | [75, 95, 85, 100] | grades[1] |
 
+Each index value represents another array. You can use another index value
+
+To access last element in the first array...use a second set of square brackets `grades[0][3]`
+
+
+# Create a Multidimensional Array
+Create a program that uses a multidimensional array to hold songs and artists, and then displays a playlist of each song, with the artist who recorded it and the duration of the song.
+
+```js
+// multidimensional array
+const playlist = [
+  ['So What', 'Miles Davis', '9:04'],
+  ['Respect', 'Aretha Franklin', '2:45'],
+  ['What a Wonderful World', 'Louis Armstrong', '2:21'],
+  ['At Last', 'Ella Fitzgerald', '4:18'],
+  ['Three Little Birds', 'Bob Marley and the Wailers', '3:01'],
+  ['The Way You Look Tonight', 'Frank Sinatra', '3:21']
+];
+
+// display artist name in first array and log to console based on index values
+const myArtists = `${playlist[0][1]}, ${playlist[1][1]}, ${playlist[5][1]}`;
+console.log(myArtists);
+
+// display whole playlist: arr = parameter of the data being passed in; want to identify the value of each item in the array
+function createListItems( arr ) {
+  let items = '';
+  for ( let i = 0; i < arr.length; i++ ) {
+    // arr[i][0] = the song name; arr[i][1] = artist na;me
+    items += `<li>${ arr[i][0] }, by ${ arr[i][1] } - ${ arr[i][2] }</li>`;
+  }
+  return items;
+}
+
+document.querySelector('main').innerHTML = `
+  <ol>
+    ${createListItems(playlist)}
+  </ol>
+`;
+```
+
+### Spread syntax and multidimensional arrays
+Note: Spread syntax effectively goes one level deep while copying an array. Therefore, it may be unsuitable for copying multidimensional arrays, as the following example shows.
+- [Copy an array (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Copy_an_array)
+
+```js
+const brass = [ ['trumpet'], ['tuba'], ['trombone'] ];
+const instruments = [...brass];
+
+instruments.shift().shift(); 
+//  "trumpet"
+
+//  Notice how the brass array is also affected by this:
+brass
+//  [ [], ["tuba"], ["trombone"] ]
+```
+
+# Challenge Task
+Declare a variable named coordinates and assign it an empty array literal.
+```js
+const coordinates = [''];
+```
+
+Next, add one array inside the coordinates array. The new nested array should contain two number values.
+```js
+const coordinates = [
+  [1, 2]
+];
+```
+
+
+# Build a Quiz Challenge 
+This video covers one solution to the first part of the "Build a Quiz" challenge.
+
+### JavaScript solution
+```js
+// 1. Create a multidimensional array to hold quiz questions and answers
+const questions = [ 
+  ['How many planets are in the Solar System?', '8'],
+  ['How many continents are there?', '7'],
+  ['How many legs does an insect have?', '6'],
+  ['What year was JavaScript created?', '1995']  
+];
+// 2. Store the number of questions answered correctly
+const correct = [];
+const incorrect = [];
+let correctAnswers = 0;
 
 
 
+/* 
+  3. Use a (for) loop to cycle through each question
+      - Present each question to the user
+      - Compare the user's response to answer in the array
+      - If the response matches the answer, the number of correctly
+        answered questions increments by 1
+*/
+// this is a loop that runs as many times as there are elements in the questions array
+for ( let i = 0; i < questions.length; i++ ) {
+  // access the question part...whatever index and it's position 0 (first element)
+  let question = questions[i][0];
+  // access the answer part
+  let answer = questions[i][1];
+  let response = prompt(question);
+  
+  // tests if response matches the correct answer
+  if ( response === answer ) {
+    // if correct, increment by +1
+    correctAnswers++; // this is the same as: correctAnswers += 1
+    // add correct answer to the array with the push method
+    correct.push(question);
+  } else {
+    // push incorrect answers to incorrect array
+    incorrect.push(question);
+  }
+}
+
+// accepts array as an argument and loops through array and builds/returns the list items
+function createListItems(arr) {
+  let items = '';
+  for (let i = 0; i < arr.length; i++) {
+    items += `<li>${arr[i]}</li>`;
+  }
+  return items;
+}
+
+// 4. Display the number of correct answers to the user
+let html = `
+  <h1>You got ${correctAnswers} question(s) correct</h1>
+  <h2>You got these questions right: </h2>
+  <ol>${ createListItems(correct) }</ol>
+
+  <h2>You got these questions wrong: </h2>
+  <ol>${ createListItems(incorrect) }</ol>
+`;
+
+document.querySelector('main').innerHTML = html;
+```
+
+### For reference:
+The return value of the prompt() method is always a string. If your question answers are numeric values, you'll need to convert the value of the response variable to a number, otherwise the condition will always evaluate to false.
+
+The unary plus operator (+) provides a quick way of converting a string to a number. Place a plus symbol just before the response variable:
+```js
+if ( +response === answer ) { 
+  ... 
+}
+```
 
 
+# Quiz Insights:
+
+Say you have two arrays, itemsA and itemsB, and you want to combine them into a new array named allItems. Complete the code so that the new allItems array stores the elements from itemsA first, followed by the elements inside itemsB:
+
+```js
+const itemsA = [ 'Lightsaber', 'Mockingjay pin', 'Box of chocolates' ];
+const itemsB = [ 'Ghost trap', 'The One Ring', 'DeLorean' ]
+const allItems = [ ...itemsA, ...itemsB ];
+```
+
+Complete the code below using the method that returns the position of the darkred string inside the colors array:
+```js
+const colors = [ 'tomato',  'crimson', 'darkred', 'firebrick' ];
+colors.indexOf('darkred'); // 2
+```
+
+
+What is the length value of the allTasks array after the above code runs?
+
+```js
+const morningTasks = [ 'study', 'exercise', 'write' ];
+const eveningTasks = [ 'bake', 'edit article',  'chill' ];
+const allTasks = [...morningTasks, ...eveningTasks];
+morningTasks.pop();
+```
+
+Answer: `6` b/c: The spread syntax creates a "copy" of the morningTasks array. So morningTasks.pop() removes an element from the end of that array only.

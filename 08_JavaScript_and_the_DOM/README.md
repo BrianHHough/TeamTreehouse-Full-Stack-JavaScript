@@ -544,3 +544,14 @@ let footerImages = document.querySelectorAll("footer a img");
 </html>
 
 ```
+
+
+# Getting and Setting Text with textContent and innerHTML
+In this video, you'll learn to read and change text using the DOM element properties textContent and innerHTML. You'll learn how each property has its own approach to the DOM.
+
+How to return the text content of a node:
+
+1. In console, we'll define a varialbe `myHeading` with: `let myHeading = document.querySelector('h1')`
+2. In console, we'll return the value that we called with: `myHeading.textContent` which returns "JavaSCript asnd the DOM" which is the h1 text.
+3. Assign a string to change the heading text
+

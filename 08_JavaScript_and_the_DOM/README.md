@@ -547,11 +547,276 @@ let footerImages = document.querySelectorAll("footer a img");
 
 
 # Getting and Setting Text with textContent and innerHTML
-In this video, you'll learn to read and change text using the DOM element properties textContent and innerHTML. You'll learn how each property has its own approach to the DOM.
+In this video, you'll learn to read and change text using the DOM element properties textContent and innerHTML. You'll learn how each property has its own approach to the DOM. Here are DOM element properties:
+- [MDN page for textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
+- [MDN page for innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
 
 How to return the text content of a node:
 
 1. In console, we'll define a varialbe `myHeading` with: `let myHeading = document.querySelector('h1')`
 2. In console, we'll return the value that we called with: `myHeading.textContent` which returns "JavaSCript asnd the DOM" which is the h1 text.
 3. Assign a string to change the heading text
+
+- innerHTML can read/replace element tags on web page
+
+Edit textual content:
+```js
+const input = document.querySelector('input');
+
+// to specify the part of p we want in the class we defined "description" in index.html
+const p = document.querySelector('p.description');
+
+const button = document.querySelector('button');
+
+// event listener for when the button is clicked. When clicked, set content 
+button.addEventListener('click', () => {
+                        p.textContent = input.value + ':';
+});
+```
+
+# Changing Element Attributes
+Attributes, like the href attribute on a link, or the action attribute on a form, exist as properties of an element object. You get or set them in a similar way we saw with text in the last video. In this video, we'll look at index.html and find an attribute to access. 
+
+Here's how to set properties for example: `p.title = "List description";`
+
+[Here is a list of standard HTML element attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes) for reference.
+
+You can also use [getAttribute](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute) and [setAttribute](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute) to manage attributes, though the technique presented in the video is more likely what you'll see in production.
+
+
+
+
+# Challenge: 
+Select the `<input>` element with the ID `linkName` and store its value in the variable inputValue. (For a refresher on getting the value of a text input, watch [this video](https://teamtreehouse.com/library/select-a-page-element-by-its-id) from the previous section.)
+
+Answer
+```js
+var inputValue = document.querySelector('#linkName').value;
+// or
+var inputValue = document.getElementById('linkName').value;
+```
+
+Next, set the [text content](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) of the `<a>` element with the ID `link` to the value stored in inputValue.
+
+Answer: So first we would select the <a> tag with getElementById and then call textContent on it, then store that in our variable So it should look something like this:
+```js
+let text = document.getElementById('link').textContent;
+document.getElementById('link').textContent = inputValue;
+```
+
+# Styling Elements
+The properties on the style object represent the various CSS properties we can set. This video covers one common use for setting styles with JavaScript: hiding and unhiding elements on the page.
+
+Inline styles can be set with an inline style property (an object)
+
+`Element.style.prop`
+For example:
+- `p.style.backgroundColor = 'lightblue'`
+- `p.style.color = 'darkblue'`
+
+Let's make a hiding/re-appearing button for showing a list
+
+
+# Quiz Questions:
+
+### Creating an element with the createElement method makes that element appear on the page.
+False
+
+### Property to change a property's style?
+style
+
+### Property to change element's class name with JavaScript?
+className
+
+### How would you create a new h1 element with JavaScript?
+```js
+document.createElement("h1");
+```
+
+### How would you set an element's CSS display property to "none" with JavaScript?
+```js
+element.style.display = "none";
+```
+
+
+
+# Appending Nodes
+
+## Code to Add Elements to a list with `Add Item` button:
+
+JavaScript Code: 
+```js 
+const toggleList = document.getElementById('toggleList');
+// query list
+const listDiv = document.querySelector('.list');
+const descriptionInput = document.querySelector('input.description');
+// to specify the part of p we want in the class we defined "description" in index.html
+const descriptionP = document.querySelector('p.description');
+const descriptionButton = document.querySelector('button.description');
+const addItemInput = document.querySelector('input.addItemInput');
+const addItemButton = document.querySelector('button.addItemButton');
+
+toggleList.addEventListener('click', () => {
+  if (listDiv.style.display == 'none') {
+    toggleList.textContent = 'Hide list';
+    listDiv.style.display = 'block';
+  } else {
+    toggleList.textContent = 'Show list';                        
+    listDiv.style.display = 'none';
+  }                         
+});
+// event listener for when the button is clicked. When clicked, set content 
+descriptionButton.addEventListener('click', () => {
+  descriptionP.innerHTML = descriptionInput.value + ':';
+ // clears description input
+ descriptionInput.value = '';
+});
+
+addItemButton.addEventListener('click', () => {
+  let ul = document.getElementsByTagName('ul')[0];
+  let li = document.createElement('li');
+  li.textContent = addItemInput.value;
+  ul.appendChild(li);
+  // clears empty input 
+  addItemInput.value = '';
+});
+  
+```
+HTML Code:
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript and the DOM</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <h1 id="myHeading">JavaScript and the DOM</h1>
+    <p>Making a web page interactive</p>
+    <button id="toggleList">Hide list</button>
+    <div class="list">
+      <p class="description">Things that are purple:</p>
+      <input type="text" class="description">
+      <button class="description">Change list description</button>
+      <ul>
+        <li>grapes</li>
+        <li>amethyst</li>
+        <li>lavender</li>
+        <li>plums</li>
+      </ul>
+      <input type="text" class="addItemInput">
+      <button class="addItemButton">Add item</button>    
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
+
+```
+
+
+# Challenge
+
+Create a paragraph element and assign it to the newParagraph variable. And set class attribute of new pagraph to panel.
+
+```js
+var contentDiv = document.getElementById('content');
+var newParagraph = document.createElement('p');
+newParagraph.className = "panel";
+```
+
+Finally, append the newParagraph element to contentDiv.
+```js
+contentDiv.appendChild(newParagraph);
+```
+
+1. You need to first create a new paragraph element using createElement method and store it in a newParagraph variable.
+2. In the second task, add a class name panel using className property.
+3. And finally, append newParagraph element to contentDiv.
+
+
+# RemoveChild Method
+CSS selectors are a powerful way to select DOM elements. If you'd like to learn more about CSS selectors, including pseudo-class selectors, check out [CSS Selectors](https://teamtreehouse.com/library/css-selectors) on Treehouse.
+
+In addition, [here's what MDN has to say](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors) about CSS selectors.
+
+[MDN page for removeChild](https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild)
+
+Practice Manipulating the DOM
+[This short workshop](https://teamtreehouse.com/library/practice-manipulating-the-dom) lets you practice manipulating the DOM with JavaScript and helps make what you learned stick.
+
+### Based on the code in last project...
+
+Added to JavaScript
+```js
+const removeItemButton = document.querySelector('button.removeItemButton');
+
+removeItemButton.addEventListener('click', () => {
+  let ul = document.getElementsByTagName('ul')[0];
+  // select last item in the list
+  let li = document.querySelector('li:last-child');
+  ul.removeChild(li);
+});
+```
+
+Added to HTML:
+<button class="removeItemButton">Remove last item</button>
+
+
+# Challenge
+Part 1: Let's remove a list item from the unordered list. First, select the <ul> element and store it in the variable myList.
+```js
+// 1st item
+let myList = document.querySelector('ul');
+// 2nd item
+let firstListItem = document.querySelector('li:first-child');
+// 3rd item
+myList.removeChild(firstListItem); 
+```
+
+Part 2: Next, select the <li> with the ID first and store it in the variable firstListItem.
+
+```js
+// 1st item
+let myList = document.querySelector('ul');
+// 2nd item
+let firstListItem = document.getElementById('first');
+```
+
+Part 3: Finally, remove the <li> element stored in firstListItem from the DOM.
+```js
+// 1st item
+let myList = document.querySelector('ul');
+// 2nd item
+let firstListItem = document.getElementById('first');
+// 3rd item
+myList.removeChild(firstListItem);
+```
+
+# Quiz
+
+### The removeChild method can be called on an element which is a child of another element.
+- True b/c the DOM is a tree where most elements have children and parents. One element's parent can be another element's child.
+
+### Place the new element p as the last child of the element stored in the div constant.
+```js
+const div = document.querySelector('div#feedback');
+const p = document.createElement('p');
+div.appendChild(p);
+```
+
+### Which method can be used to remove an element from the DOM?
+- removeChild
+
+### How does appendChild know where to place an element within a web page?
+- By looking at element appendChild was called on, and nesting the new element inside.
+
+### The appendChild method can also be used to remove elements from the DOM.
+- False b/c there's a separate method for removing nodes
+
+
+
+
+# What Is An Event?
+[MDN has a thorough list of DOM events](https://developer.mozilla.org/en-US/docs/Web/Events), as well as demonstration code so you can see many of them in use.
+
 

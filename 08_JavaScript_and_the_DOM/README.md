@@ -819,4 +819,46 @@ div.appendChild(p);
 # What Is An Event?
 [MDN has a thorough list of DOM events](https://developer.mozilla.org/en-US/docs/Web/Events), as well as demonstration code so you can see many of them in use.
 
+# Functions as Parameters
+Just as you can pass a number to a function, you can pass a function to a function. This might sound a bit strange, but once you've tried it a few times, you'll get the hang of it. You'll also unlock one of JavaScript's most powerful features.
+
+### function declaration:
+```js
+function say(something) {
+  console.log(something);
+}
+say('Hello');
+```
+This console.log's `Hello`
+
+### function accepting two params
+```js
+function say(something) {
+  console.log(something);
+}
+function exec(func, arg) {
+  func(arg);
+}
+exec(say, 'Hi, there');
+```
+Expecting arg to be an acceptable argument to pass through function and exec runs arg thru func.
+
+This console.log's `Hi there`
+
+### Transform from statement into a function expression
+```js
+
+function exec(func, arg) {
+  func(arg);
+}
+
+exec(function say(something) {
+  console.log(something);
+}, 'Hi, there');
+```
+
+This console.log's `Hi there` as well
+
+### Anonymous Function
+
 
